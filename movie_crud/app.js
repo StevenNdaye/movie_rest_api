@@ -7,7 +7,7 @@ var app = express();//Create the Express app
 var dbName = 'movieDB';
 var connectingString = 'mongodb://localhost:27017/' + dbName;
 
-mongoose.connect(connectionString);
+mongoose.connect(connectingString);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
