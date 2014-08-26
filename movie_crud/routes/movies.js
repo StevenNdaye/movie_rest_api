@@ -28,3 +28,44 @@ router.route('/movies')
   });
   
 
+router.route('/movies/:id').put(function(request, response) {
+  Movie.findOne({_id: request.params.id }, function (err, movie) {
+    if (err) {
+      return response.send(err);
+    }
+
+    for (prop in request.body) {
+      movie[prop] = request.body[prop];
+    } 
+
+    movie.save(function(err){
+      if (err) {
+        return response.send(err);
+      }
+
+      response.json({ message: 'Movie updated!' });
+    });
+  });
+});
+
+router.route('/movies/:id').get(function(request, response){
+  Movie.findOne({_id: request.params.id}, function(err, movie){
+    if (err) {
+      response.send(err);
+    }
+
+    response.json(movie);
+  });
+});
+
+router.route('/movies/:id').delete(function(request, response){
+  Movie.remove({_id: request.params.id}, function(err, movie){
+    if(err){
+      response.send(err);
+    }
+
+    response.json({message: 'Successfully deleted'});
+  });
+});
+
+module.exports = router;
