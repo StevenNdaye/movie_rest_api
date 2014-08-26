@@ -14,7 +14,7 @@ router.route('/movies')
       response.json(movies);
 
     });    
-  });
+  })
   .post(function (request, response) {
     var movie = new Movie(request.body);
 
