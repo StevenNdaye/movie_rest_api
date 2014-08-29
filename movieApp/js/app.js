@@ -13,7 +13,7 @@ angular.module('movieApp').config(function($stateProvider) {
     url: '/movies/new',
     templateUrl: 'partials/movie-add.html',
     controller: 'MovieCreateController'
-  }).state('editMoive',{
+  }).state('editMovie',{
     url: '/movies/:id/edit',
     templateUrl: 'partials/movie-edit.html',
     controller: 'MovieEditController'
